@@ -14,6 +14,9 @@ def print_rules():
 
 print_rules()
 
+# Sets
+Player_guesses = set()
+
 # Set up the board as a 5x5 grid using two lists where
 # 0 represents the spaces on the board
 board_size = 5
@@ -57,3 +60,21 @@ while True:
             else:
                 board_string += str(value)
         print(board_string)
+
+# Prompt the player for user input until a valid input is accepted
+    while True:
+        try:
+            x = int(input("Choose Row: "))
+            y = int(input("Choose Column: "))
+            if x < 0 or x > 4 or y > 0 or y < 4:
+                raise ValueError("Choose a number betweeb 0 and 4!")
+            elif (x, y) in Player_guesses:
+                raise ValueError("You already guesses that combination")
+            else:
+                break
+        except ValueError as error:
+            print("invalid input:", error)
+
+    Player_guesses.add((x, y))
+
+
