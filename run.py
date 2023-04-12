@@ -37,3 +37,23 @@ while player_ships > 0:
     if computer_board[x][y] == 0:
         computer_board[x][y] = 1
         computer_ships -= 1
+
+# Print the boards with a loop that continues untill game ends
+while True:
+    print("player's board:")
+    for row in player_board:
+        board_string = ""
+        for value in row:
+            board_string += str(value)
+            print(board_string)
+
+    # Print computer board with hidden ships disguised as 0s
+    print("computer's board:")
+    for row in computer_board:
+        board_string = ""
+        for value in row:
+            if value == 1:
+                board_string += "0"
+            else:
+                board_string += str(value)
+        print(board_string)
