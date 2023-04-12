@@ -14,7 +14,17 @@ def print_rules():
 
 print_rules()
 
-# Set up the board using two lists where 0 represents the spaces on the board
+# Set up the board as a 5x5 grid using two lists where
+# 0 represents the spaces on the board
 board_size = 5
 player_board = [[0 for x in range(board_size)] for y in range(board_size)]
 computer_board = [[0 for x in range(board_size)] for y in range(board_size)]
+
+# Generate random coordinates and loop untill all 3 ships are placed on board
+player_ships = 3
+while player_ships > 0:
+    x = random.randint(0, board_size - 1)
+    y = random.randint(0, board_size - 1)
+    if player_board[x][y] == 0:
+        player_board[x][y] = 1
+        player_ships -= 1
