@@ -26,9 +26,7 @@ The game runs in the python terminal and your mission is to sink the computers s
    it all works as intended
 
   ## Unfixed Bugs
-  * For some reason the application works in the vs code terminal and local terminal, 
-  but it does not work in the heroku mock terminal (wich is the whole point).
-  Sadly i noticed that too late and i did not have the time to fix it.
+  * The computers ship position does not show after being hit.
 
   ## Deployment
   * The site was deployed using code institutes mock terminal for Heroku.
