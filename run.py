@@ -28,3 +28,12 @@ while player_ships > 0:
     if player_board[x][y] == 0:
         player_board[x][y] = 1
         player_ships -= 1
+
+# Generate the computers ships in the same way
+computer_ships = 3
+while player_ships > 0:
+    x = random.randint(0, board_size - 1)
+    y = random.randint(0, board_size - 1)
+    if computer_board[x][y] == 0:
+        computer_board[x][y] = 1
+        computer_ships -= 1
