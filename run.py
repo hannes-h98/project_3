@@ -17,6 +17,10 @@ print_rules()
 # Sets
 Player_guesses = set()
 
+computer_guess_hit = set()
+
+computer_hit = set()
+
 # Set up the board as a 5x5 grid using two lists where
 # 0 represents the spaces on the board
 board_size = 5
@@ -84,3 +88,38 @@ while True:
             computer_board[x, y] = 0
         else:
             print("Miss.")
+
+# This statement checks if the computer hits a ship
+# storing its coordinates in a set
+
+    while True:
+        if len(computer_guess_hit) > 0:
+            (x, y) = computer_guess_hit.pop()
+            if player_board[x, y] == 1:
+                print("The computer hit your ship!")
+                player_board[x, y] = 0
+            else:
+                print("The computer missed")
+                if len(computer_guess_hit) == 0:
+                    break
+        else:
+            x = random.randint(0, board_size - 1)
+            y = random.randint(0, board_size - 1)
+            if (x, y) not in computer_hit:
+                computer_hit.add((x, y))
+                if player_board[x, y] == 1:
+                    print("The computer hit your ship")
+                    player_board[x, y] = 0
+                    computer_guess_hit.add((x, y))
+                else:
+                    print("The computer missed")
+                break
+
+# Check if the game is over by seeing if the rows and columns all = 0
+
+    if sum(sum(row) for row in player_board) == 0:
+        print("The computer wins")
+        break
+    elif sum(sum(row) for row in computer_board) == 0:
+        print("You win!")
+        break
