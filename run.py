@@ -1,5 +1,4 @@
 import random
-"""import random module for number generation"""
 
 
 # Welcome message and rules
@@ -12,4 +11,10 @@ def print_rules():
     print("You have to guess a row and column between 0-4 (0 indexing).")
     print("You can not guess the same number combination twice.")
 
+
 print_rules()
+
+# Set up the board using two lists where 0 represents the spaces on the board
+board_size = 5
+player_board = [[0 for x in range(board_size)] for y in range(board_size)]
+computer_board = [[0 for x in range(board_size)] for y in range(board_size)]
