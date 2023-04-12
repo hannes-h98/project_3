@@ -15,7 +15,7 @@ def print_rules():
 print_rules()
 
 # Sets
-Player_guesses = set()
+player_guesses = set()
 
 computer_guess_hit = set()
 
@@ -38,7 +38,7 @@ while player_ships > 0:
 
 # Generate the computers ships in the same way
 computer_ships = 3
-while player_ships > 0:
+while computer_ships > 0:
     x = random.randint(0, board_size - 1)
     y = random.randint(0, board_size - 1)
     if computer_board[x][y] == 0:
@@ -52,7 +52,7 @@ while True:
         board_string = ""
         for value in row:
             board_string += str(value)
-            print(board_string)
+        print(board_string)
 
     # Print computer board with hidden ships disguised as 0s
     print("computer's board:")
@@ -70,16 +70,16 @@ while True:
         try:
             x = int(input("Choose Row: "))
             y = int(input("Choose Column: "))
-            if x < 0 or x > 4 or y > 0 or y < 4:
+            if x < 0 or x > 4 or y < 0 or y > 4:
                 raise ValueError("Choose a number betweeb 0 and 4!")
-            elif (x, y) in Player_guesses:
-                raise ValueError("You already guesses that combination")
+            elif (x, y) in player_guesses:
+                raise ValueError("You already guessed that combination")
             else:
                 break
         except ValueError as error:
             print("invalid input:", error)
 
-    Player_guesses.add((x, y))
+    player_guesses.add((x, y))
 
 # Checks player guess for valide coordinates within range
     if x < board_size and y < board_size:
@@ -95,9 +95,9 @@ while True:
     while True:
         if len(computer_guess_hit) > 0:
             (x, y) = computer_guess_hit.pop()
-            if player_board[x, y] == 1:
+            if player_board[x][y] == 1:
                 print("The computer hit your ship!")
-                player_board[x, y] = 0
+                player_board[x][y] = 0
             else:
                 print("The computer missed")
                 if len(computer_guess_hit) == 0:
@@ -107,10 +107,10 @@ while True:
             y = random.randint(0, board_size - 1)
             if (x, y) not in computer_hit:
                 computer_hit.add((x, y))
-                if player_board[x, y] == 1:
+                if player_board[x][y] == 1:
                     print("The computer hit your ship")
-                    player_board[x, y] = 0
-                    computer_guess_hit.add((x, y))
+                    player_board[x][y] = 0
+                    computer_hit.add((x, y))
                 else:
                     print("The computer missed")
                 break
