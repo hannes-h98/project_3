@@ -83,9 +83,9 @@ while True:
 
 # Checks player guess for valide coordinates within range
     if x < board_size and y < board_size:
-        if computer_board[x, y] == 1:
+        if computer_board[x][y] == 1:
             print("Hit!")
-            computer_board[x, y] = 0
+            computer_board[x][y] = 0
         else:
             print("Miss.")
 
